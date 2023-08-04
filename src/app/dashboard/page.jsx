@@ -33,7 +33,9 @@ const [links,setLinks] = useState([]);
             onUserLoggedIn={handleUserLoggedIn} 
             onUserNotLoggedIn={hanldeOnUserNotLoggedIn} 
             onUserNotRegistered={handleUserNotRegistered}>
-            Loading...
+            <div className='flex justify-center w-full my-20'>
+            <div className="loader"></div>
+            </div>
             </AuthProvider>
             );
     }
@@ -49,7 +51,7 @@ const [links,setLinks] = useState([]);
                 id: uuidv4(),
                 title: title,
                 url:url,
-                uid: currentUser.uid
+                uid:currentUser.uid
             }
             const res = insertNewLink(newLink);
             newLink.docId = res.id;
@@ -59,15 +61,16 @@ const [links,setLinks] = useState([]);
             document.getElementById("myform").reset();
         }
     }
-    
+    console.log(links)
     function handleOnChange(e){
         const value = e.target.value;
-        if(e.target.name==='url'){
+        if(e.target.name==='title'){
             setTitle(value);
         }
-        if(e.target.name==='title'){
+        else if(e.target.name==='url'){
             setUrl(value);
         } 
+        console.log(title);
     }
 // funcion para elminar link de la DB
     async function handleDeleteLink(docId){
@@ -81,21 +84,19 @@ const [links,setLinks] = useState([]);
         link.title = title;
         link.url = url;
         updateLink(docId,link);
-
     }
     console.log(links);
     return(
-        <div className='my-8'>
+        <div className='flex flex-col items-center justify-center w-full my-8'>
                 <h1 className='text-3xl font-bold text-center text-white'>Dashboard</h1>
-                <form id='myform' onSubmit={handleOnSubmit} className='flex flex-col gap-2 px-2'>
+                <form id='myform' onSubmit={handleOnSubmit} className='flex md:w-[800px] w-full flex-col gap-2 px-2'>
                     <label className="font-semibold text-white" htmlFor="title">Titulo :</label>
-                    <input onChange={handleOnChange} className='p-2 text-black bg-white outline-none rounded-xl' name='title' type="text"/>
+                    <input onChange={handleOnChange} className='p-3 text-black bg-white rounded outline-none' name='title' type="text"/>
                     <label className="font-semibold text-white" htmlFor="url">Url :</label>
-                    <input onChange={handleOnChange} className='p-2 text-black bg-white outline-none rounded-xl back ' name='url' type="text"/>
-                    <button type='submit' className='p-2 mt-4 font-semibold text-black bg-white rounded-lg '>Crear nuevo link</button>
+                    <input onChange={handleOnChange} className='p-3 text-black bg-white rounded outline-none ' name='url' type="text"/>
+                    <button type='submit' className='w-48 p-2 mt-4 font-semibold text-black bg-white border-white rounded hover:bg-principal hover:text-white '>Crear nuevo link</button>
                 </form>
-
-                <div className='px-2 my-8'>
+                <div className='px-2 my-8 md:w-[800px] w-full'>
                     <h1 className='px-2 text-3xl font-bold text-center text-white'>Links</h1>
                     {links.length === 0 && <p className='my-6 text-center text-white '>No tienes ningun link</p> }
                     {links.map((link)=>(
@@ -106,7 +107,6 @@ const [links,setLinks] = useState([]);
                         title={link.title} 
                         onDelete={handleDeleteLink} 
                         onUpdate={handleUpdateLink}/>
-                          
                     ))}
                 </div>            
             </div> 

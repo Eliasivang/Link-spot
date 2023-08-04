@@ -3,9 +3,9 @@ import React, { useRef, useState } from 'react'
 import AuthProvider from '../../components/AuthProvider'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { getProfilePhotoUrl, setUserProfilePhoto, updateUser } from '../../firebase/firebase';
-import Header from '../../components/NavBar';
-import NavBar from '../../components/NavBar';
+
 
 function page() {
 const router = useRouter();
@@ -56,6 +56,9 @@ const [state,setState] = useState(0);
             onUserLoggedIn={handleUserLoggedIn} 
             onUserNotRegistered={handleUserNotRegistered} 
             onUserNotLoggedIn={hanldeOnUserNotLoggedIn}>
+            <div className='flex justify-center w-full my-20'>
+            <div className="loader"></div>
+            </div>
             </AuthProvider>
         )
     }
@@ -68,7 +71,7 @@ const [state,setState] = useState(0);
             <Image className='rounded' width={200} height={200} src={profileUrl} alt='profileImage'/>
         </div>
         <div className='flex justify-center'>
-            <button onClick={handleOpenFilePicker} className='p-2 font-semibold text-black bg-white rounded'>Elige una nueva foto de perfil</button>
+            <button onClick={handleOpenFilePicker} className='p-2 font-semibold text-black bg-white rounded hover:bg-principal hover:text-white'>Elige una nueva foto de perfil</button>
             <input className='hidden' type="file" ref={fileRef} onChange={handleOnChangeFile} />
         </div>
     </div>

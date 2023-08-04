@@ -14,11 +14,14 @@ const router = useRouter();
       router.push('/dashboard');
   }
   return (
-    <div className='w-full bg-white'>
-        <ul className='flex w-full gap-4 p-4 px-2 font-semibold text-black '>
-            <li><a onClick={onHandleClickProfile}><button>Perfil</button></a></li>
-            <li><a onClick={onHandleClickLinks}><button>Links</button></a></li>
-            <li onClick={onHandleSignOut} >Cerrar sesion</li>
+    <div className='w-full backdrop-blur-3xl'>
+        <ul className='flex justify-between w-full gap-2 p-2 px-3 font-semibold text-white '>
+          <div className='flex gap-2'>
+              <li><a onClick={onHandleClickLinks}><button className='p-2 rounded hover:bg-principal hover:text-white'>Links</button></a></li>
+              <li><a onClick={onHandleClickProfile}><button className='p-2 rounded hover:bg-principal hover:text-white'>Perfil</button></a></li>
+          </div>
+            
+              <li className='p-2 rounded hover:bg-principal hover:text-white' onClick={onHandleSignOut} >Cerrar sesion</li>
         </ul>
     </div>
   )

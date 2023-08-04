@@ -22,7 +22,7 @@ function handleUserNotRegistered (user){
 }
 
 function handleOnChange(e){
-  setUsername(e.target.value);
+  setUsername(e.target.value.trim());
 }
 
 async function handleOnClick(){
@@ -40,7 +40,8 @@ async function handleOnClick(){
 }
 
 if(state ==3 || state==5 ){
-  return <div>
+  return (
+    <div>
     <h1>Elige tu nombre de usaurio {currentUser.displayName}</h1>
     <div>
         <input type="text" onChange={handleOnChange} placeholder='Jane Doe' />
@@ -50,6 +51,7 @@ if(state ==3 || state==5 ){
       <button onClick={handleOnClick}>Continuar</button>
     </div>
   </div>
+  )
 }
 
 

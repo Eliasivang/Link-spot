@@ -1,6 +1,8 @@
 'use client'
 import React, { useRef, useState,useEffect } from 'react'
 import { deleteLink } from '../firebase/firebase';
+import {AiFillDelete} from 'react-icons/ai'
+import {AiFillEdit} from 'react-icons/ai'
 
 function Link({docId,title,url,onDelete,onUpdate}) {
 const [currentTitle,setCurrentTitle] = useState(title); // estado para mopdificar el titulo
@@ -50,37 +52,37 @@ async function handleRemoveLink(){
 
 
   return (
-    <div className='flex flex-col gap-2 p-2 my-8 bg-white rounded' key={docId}>
-            {editUrl ?
-                <input 
-                ref={urlRef} 
-                className='p-2 text-black border-2 rounded font-semi bold' 
-                onChange={handleOnChangeUrl} 
-                value={currentUrl}  
-                onBlur={handleOnBlurUrl} /> 
-            :
-            <div className='flex items-center justify-between gap-2'>  
-                <p className='font-semibold'>{currentUrl}</p>
-                <button onClick={handleOnEditUrl} className='p-2 font-semibold text-white bg-blue-500 rounded'>Editar</button>
-            </div>
-            }
-        <div className='flex flex-col gap-2'>
-            {editTitle ?
-                <input 
-                ref={titleRef} 
-                className='p-2 text-black border-2 rounded font-semi bold' 
-                onChange={handleOnChangeTitle} value={currentTitle} 
-                onBlur={handleOnBlurTitle} /> // cuando saquemos el foco del input de ejecuta la funcion
-            :
-            <div className='flex items-center justify-between gap-2'>
-                <p className='font-semibold'>{currentTitle}</p>
-                <button onClick={handleOnEditTitle} className='p-2 font-semibold text-white bg-blue-500 rounded'>Editar</button>
-            </div>
-            }
+    <div className='flex justify-between gap-2 p-2 my-8 bg-white rounded' key={docId}>
+            <div className='flex flex-col w-full gap-2 overflow-hidden'>
+                {editTitle ?
+                    <input 
+                    ref={titleRef} 
+                    className='w-full p-2 text-black border-2 rounded font-semi bold' 
+                    onChange={handleOnChangeTitle} value={currentTitle} 
+                    onBlur={handleOnBlurTitle} /> // cuando saquemos el foco del input de ejecuta la funcion
+                    :
+                    <div className='flex items-center gap-2'>
+                   <button onClick={handleOnEditTitle} className='p-2 font-semibold rounded hover:text-blue-500 text-neutral-400'><AiFillEdit/></button>
+                    <p className='font-semibold'>{currentTitle}</p>
+                </div>
+                }
+                {editUrl ?
+                    <input 
+                    ref={urlRef} 
+                    className='p-2 text-black border-2 rounded font-semi bold' 
+                    onChange={handleOnChangeUrl} 
+                    value={currentUrl}  
+                    onBlur={handleOnBlurUrl} /> 
+                :
+                <div className='flex items-center h-full gap-2'>  
+                    <button onClick={handleOnEditUrl} className='p-2 font-semibold rounded hover:text-blue-500 text-neutral-400'><AiFillEdit/></button>
+                    <p className=''>{currentUrl}</p>
+                </div>
+                }
         </div>
 
-        <div>
-            <button onClick={handleRemoveLink} className='w-full p-2 font-semibold text-white bg-red-500 rounded'>Borrar Link</button>
+        <div className='flex items-center'>
+            <button onClick={handleRemoveLink} className='w-full p-2 text-neutral-400 hover:text-red-500'><AiFillDelete size={25} /></button>
         </div>
     </div>
   )

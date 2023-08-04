@@ -33,7 +33,7 @@ export async function userExists(uid){
 export async function existsUsername(username){
     const users = [];
     const docsRef= collection(db,"users");
-    const q = query(docsRef,where("uid","==",username));
+    const q = query(docsRef,where("username","==",username));
     const querySnapshot = await getDocs(q);
 
     querySnapshot.forEach(doc=>{
@@ -141,4 +141,13 @@ export async function getProfilePhotoUrl(profilePicture){
         console.error(error);
         
     }
+}
+
+export async function getUserPublicProfileUser(uid){
+        const profileInfo = await getUserInfo(uid);
+        const linksInfo = await getLinks(uid);
+        return{
+            profileInfo:profileInfo,
+            linksInfo:linksInfo
+        };
 }
