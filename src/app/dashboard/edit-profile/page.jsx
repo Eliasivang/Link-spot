@@ -14,6 +14,7 @@ const [currentUser,setCurrentUser] = useState({})
 const [profileUrl,setProfileUrl] = useState(undefined);
 const [state,setState] = useState(0);
 
+
     async function handleUserLoggedIn (user){
         setCurrentUser(user);
         const url = await getProfilePhotoUrl(user.profilePicture);
@@ -66,10 +67,13 @@ const [state,setState] = useState(0);
   return (
 <>
     
-    <div>
-        <div className='flex items-center justify-center my-6 '>
+    <div className='mb-16'>
+        {!profileUrl ?
+        <p className='p-2 my-8 text-2xl text-center text-white'>No tienes ninguna foto de perfil</p> 
+        : 
+         <div className='flex items-center justify-center my-6 '>
             <Image className='rounded' width={200} height={200} src={profileUrl} alt='profileImage'/>
-        </div>
+        </div>}
         <div className='flex justify-center'>
             <button onClick={handleOpenFilePicker} className='p-2 font-semibold text-black bg-white rounded hover:bg-principal hover:text-white'>Elige una nueva foto de perfil</button>
             <input className='hidden' type="file" ref={fileRef} onChange={handleOnChangeFile} />

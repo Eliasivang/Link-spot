@@ -1,5 +1,5 @@
 'use client'
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import {BiLinkExternal} from 'react-icons/bi'
 import { motion } from "framer-motion"
 import  { useEffect, useState } from 'react'
@@ -10,6 +10,10 @@ function PublicPage() {
     const [profile,setProfile] = useState(null);
     const [url,setUrl] = useState('');
     const [state,setState] = useState(0)
+    const router = useRouter();
+    function onHandleCreateAccount(){
+        router.push('/')
+    }
     useEffect(()=>{  
         getProfile();
         async function getProfile(){
@@ -48,8 +52,12 @@ function PublicPage() {
     if(profile){
         return (
             <main className='flex flex-col items-center justify-center w-full px-2 mb-10'>
+                <div className='flex justify-end w-full'>
+                    <button onClick={onHandleCreateAccount} className='p-2 my-2 text-sm text-white rounded hover:bg-violet-700 md:text-md md:my-4 bg-principal'>Crear una cuenta</button>
+                </div>
+                
                 <div className='w-[150px] h-[150px] my-4 rounded-full overflow-hidden'>
-                    <img src={url} className='w-[150px] h-[150px]'  alt='profile_photo'/>
+                    <img src={url} className='w-[150px] h-[150px] text-center'  alt='profile_photo'/>
                 </div>                
                 <div className='flex flex-col items-center justify-center'>
                     <h2 className='text-2xl font-semibold text-white'>@{profile?.profileInfo.username}</h2>
