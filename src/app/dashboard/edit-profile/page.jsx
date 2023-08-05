@@ -21,10 +21,10 @@ const [state,setState] = useState(0);
         setState(2);
     }
     function hanldeOnUserNotLoggedIn(){
-        router.push("/login");
+        router.push("/");
     }
     function handleUserNotRegistered (user){
-        router.push("/login");
+        router.push("/");
     }
 
     function handleOpenFilePicker(){

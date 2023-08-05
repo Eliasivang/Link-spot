@@ -15,7 +15,7 @@ const [username,setUsername] = useState(' ')
     router.push("/dashboard")
 }
 function hanldeOnUserNotLoggedIn(){
-    router.push("/login");
+    router.push("/");
 }
 function handleUserNotRegistered (user){
     setCurrentUser(user);

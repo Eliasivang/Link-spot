@@ -22,10 +22,10 @@ const [links,setLinks] = useState([]);
         setLinks([...resLinks]);
     }
     function hanldeOnUserNotLoggedIn(){
-        router.push("/login");
+        router.push("/");
     }
     function handleUserNotRegistered (user){
-        router.push("/login");
+        router.push("/");
     }
 
     if(state===0){
