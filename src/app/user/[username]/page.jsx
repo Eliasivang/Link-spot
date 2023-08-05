@@ -1,5 +1,6 @@
 'use client'
 import { useParams, useRouter } from 'next/navigation';
+import Footer from '@/app/components/Footer';
 import {BiLinkExternal} from 'react-icons/bi'
 import { motion } from "framer-motion"
 import  { useEffect, useState } from 'react'
@@ -51,12 +52,12 @@ function PublicPage() {
     }
     if(profile){
         return (
-            <main className='flex flex-col items-center justify-center w-full px-2 mb-10'>
-                <div className='flex justify-end w-full'>
+            <main className='flex flex-col items-center justify-center w-full px-2 '>
+                <div className='top-0 right-0 flex justify-end w-full lg:absolute lg:mx-2'>
                     <button onClick={onHandleCreateAccount} className='p-2 my-2 text-sm text-white rounded hover:bg-violet-700 md:text-md md:my-4 bg-principal'>Crear una cuenta</button>
                 </div>
                 
-                <div className='w-[150px] h-[150px] my-4 rounded-full overflow-hidden'>
+                <div className='w-[150px] h-[150px]  rounded-full overflow-hidden my-0 lg:my-6'>
                     <img src={url} className='w-[150px] h-[150px] text-center'  alt='profile_photo'/>
                 </div>                
                 <div className='flex flex-col items-center justify-center'>
@@ -64,7 +65,7 @@ function PublicPage() {
                     <h3 className='text-xl text-white'>{profile?.profileInfo.displayName}</h3> 
                 </div>
                 
-                <section className='md:w-[700px] w-full '>
+                <section className='md:w-[700px] w-full mb-28 '>
                     <h2 className='my-6 text-2xl font-semibold text-center text-white'>Mis Links</h2>
                     <div className='flex flex-col justify-center w-full gap-4 '>   
                     {profile?.linksInfo.map((link)=>(
@@ -83,6 +84,7 @@ function PublicPage() {
                     }
                     </div>
                 </section>
+                <Footer/>
             </main>
             )
         }
