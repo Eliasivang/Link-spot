@@ -10,22 +10,17 @@ function PublicPage() {
     const [profile,setProfile] = useState(null);
     const [url,setUrl] = useState('');
     const [state,setState] = useState(0)
-    useEffect(()=>{ 
-        
+    useEffect(()=>{  
         getProfile();
         async function getProfile(){
-            const username = params.username;
-            try {
-                
+            const username = params.username;    
+            try {          
                 const userUid= await existsUsername(username);
-                
                 console.log(userUid)
                 if(userUid){
-                    
                     const userInfo = await getUserPublicProfileUser(userUid);
                     setProfile(userInfo);
                     console.log(profile)
-
                     const url = await getProfilePhotoUrl(userInfo.profileInfo.profilePicture);                  
                     setUrl(url);
                     setState(6)
@@ -34,7 +29,7 @@ function PublicPage() {
                 console.error(error);
             }
         }
-    },[]);
+    },[state]);
     if(state===0){
         return (
             <div className='flex items-center justify-center w-full h-screen '>
@@ -46,9 +41,8 @@ function PublicPage() {
     if(state===7){
         return (
             <div className='flex items-center justify-center w-full h-screen'>
-                 <h2 className='my-10 text-5xl font-semibold text-center text-white font'>Ups!Este usuario no existe</h2>
+                <h2 className='my-10 text-5xl font-semibold text-center text-white font'>Ups!Este usuario no existe</h2>
             </div>
-           
         )
     }
     if(profile){
@@ -56,9 +50,7 @@ function PublicPage() {
             <main className='flex flex-col items-center justify-center w-full px-2'>
                 <div className='w-[150px] h-[150px] my-4 rounded-full overflow-hidden'>
                     <img src={url} className='w-[150px] h-[150px]'  alt='profile_photo'/>
-                </div>
-                   
-                
+                </div>                
                 <div className='flex flex-col items-center justify-center'>
                     <h2 className='text-2xl font-semibold text-white'>@{profile?.profileInfo.username}</h2>
                     <h3 className='text-xl text-white'>{profile?.profileInfo.displayName}</h3> 
@@ -69,6 +61,7 @@ function PublicPage() {
                     <div className='flex flex-col justify-center w-full gap-4 '>   
                     {profile?.linksInfo.map((link)=>(
                         <motion.a
+                        key={link.title}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.9 }}
                         target='_blank'  href={link.url}>
