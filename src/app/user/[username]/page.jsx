@@ -47,7 +47,7 @@ function PublicPage() {
     }
     if(profile){
         return (
-            <main className='flex flex-col items-center justify-center w-full px-2'>
+            <main className='flex flex-col items-center justify-center w-full px-2 mb-10'>
                 <div className='w-[150px] h-[150px] my-4 rounded-full overflow-hidden'>
                     <img src={url} className='w-[150px] h-[150px]'  alt='profile_photo'/>
                 </div>                

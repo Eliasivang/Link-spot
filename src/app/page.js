@@ -1,8 +1,8 @@
 'use client'
 import {FcGoogle} from "react-icons/fc"
 import { auth } from "./firebase/firebase"
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthProvider from "./components/AuthProvider"
 import demo from './assets/demo.png'
