@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import './globals.css'
 import { Barlow, Montserrat, Outfit, Raleway } from 'next/font/google'
+import Footer from './components/Footer'
 
 const font = Outfit({ subsets: ['latin'],weight:["100","200","400","500","600","700","800"] })
 
@@ -12,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={`${font.className}"h-screen"`}>
         {children}
         </body>
     </html>
