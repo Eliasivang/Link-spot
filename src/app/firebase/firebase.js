@@ -1,8 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
+import {getAuth,signOut} from "firebase/auth"
 import {getStorage,ref,uploadBytes,getDownloadURL,getByter} from "firebase/storage"
 import {getFirestore,collection,addDoc,getDocs,doc,getDoc,query,where,deleteDoc, setDoc} from "firebase/firestore" 
-import { cloneElement } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,14 +19,14 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
-export const auth = getAuth(firebaseApp)
-const db = getFirestore(firebaseApp)
-const storage = getStorage(firebaseApp)
+export const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+const storage = getStorage(firebaseApp);
 
 export async function userExists(uid){
-    const docRef = doc(db,"users",uid)
-    const res = await getDoc(docRef)
-    return res.exists()
+    const docRef = doc(db,"users",uid);
+    const res = await getDoc(docRef);
+    return res.exists();
 }
 
 export async function existsUsername(username){
@@ -117,7 +116,7 @@ export async function deleteLink(docId){
         const res = await deleteDoc(docRef);
         return res;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
@@ -150,4 +149,13 @@ export async function getUserPublicProfileUser(uid){
             profileInfo:profileInfo,
             linksInfo:linksInfo
         };
+}
+
+export async function exit(){
+    try {
+        await signOut(auth)
+    } catch (error) {
+        console.error(error)
+    }
+    
 }

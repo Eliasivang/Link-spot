@@ -1,11 +1,14 @@
 'use client'
-import Image from 'next/image'
 import {FcGoogle} from "react-icons/fc"
 import { auth, userExists } from '../firebase/firebase'
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthProvider from '../components/AuthProvider'
+import demo from '../assets/demo.png'
+import Header from '../components/Header'
+import Image from "next/image"
+import Footer from "../components/Footer"
 
 export default function Home() {
 const [currentUser,setCurrentUser] = useState(null)
@@ -47,9 +50,20 @@ function handleUserNotRegistered (user){
 
 if(state===4){
     return (
-        <main className="flex flex-col items-center justify-between min-h-screen p-24">
-            <button onClick={handleOnClick} className='flex items-center justify-center w-full gap-2 p-3 my-2 text-base text-black bg-white rounded-xl'> <span><FcGoogle size={25}/></span>Ingresar con Google</button>
+        <>
+        <Header/>
+        <main className="flex flex-col items-center justify-center w-full px-2 text-white md:my-8 ">
+            <div className="w-full md:w-[800px]">
+            <div className="block gap-2 mb-8 md:flex">
+                <p className='p-2 text-[27px] md:text-[40px] font-semibold '>Crea tu cuenta y guarda todos tus <span className="font-bold text-violet-700">links</span> en un solo lugar.</p>
+                <Image className="w-full h-full shadow-2xl md:w-8/12 shadow-black rounded-2xl" src={demo} alt="demo-image" />
+
+            </div>
+            <button onClick={handleOnClick} className='flex items-center justify-center w-full gap-2 p-3 my-2 text-base text-black bg-white rounded-xl'> <span><FcGoogle size={25}/></span>Iniciar sesion con Google</button>
+            </div>
         </main>
+        <Footer/>
+        </>
     )       
 } 
 

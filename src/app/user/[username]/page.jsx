@@ -1,5 +1,6 @@
 'use client'
 import { useParams } from 'next/navigation';
+import {BiLinkExternal} from 'react-icons/bi'
 import { motion } from "framer-motion"
 import  { useEffect, useState } from 'react'
 import { existsUsername,getProfilePhotoUrl,getUserPublicProfileUser} from '@/app/firebase/firebase';
@@ -54,9 +55,11 @@ function page() {
     if(profile){
         return (
             <main className='flex flex-col items-center justify-center w-full px-2'>
-                <div className='flex justify-center my-3 mt-10 '>
-                    <Image className='p-2 rounded-full' src={url} width={140} height={140} alt='profile_photo'/>
+                <div className='w-[150px] h-[150px] my-4 rounded-full overflow-hidden'>
+                    <img src={url} className='w-[150px] h-[150px]'  alt='profile_photo'/>
                 </div>
+                   
+                
                 <div className='flex flex-col items-center justify-center'>
                     <h2 className='text-2xl font-semibold text-white'>@{profile?.profileInfo.username}</h2>
                     <h3 className='text-xl text-white'>{profile?.profileInfo.displayName}</h3> 
@@ -69,7 +72,13 @@ function page() {
                         <motion.a
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.9 }}
-                        target='_blank'  href={link.url}><div className='w-full p-3 text-lg text-center bg-white rounded hover:text-white hover:bg-principal hover:shadow-2xl shadow-black '>{link.title}</div></motion.a>
+                        target='_blank'  href={link.url}>
+                            <div 
+                            className='relative flex items-center justify-center w-full p-3 text-lg text-center bg-white rounded hover:text-white hover:bg-principal hover:shadow-2xl shadow-black'>
+                                <BiLinkExternal className='absolute left-0 ml-2' size={28}/>
+                                <p>{link.title}</p>
+                            </div>
+                        </motion.a>
                     ))        
                     }
                     </div>

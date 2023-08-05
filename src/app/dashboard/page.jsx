@@ -91,9 +91,9 @@ const [links,setLinks] = useState([]);
                 <h1 className='text-3xl font-bold text-center text-white'>Dashboard</h1>
                 <form id='myform' onSubmit={handleOnSubmit} className='flex md:w-[800px] w-full flex-col gap-2 px-2'>
                     <label className="font-semibold text-white" htmlFor="title">Titulo :</label>
-                    <input onChange={handleOnChange} className='p-3 text-black bg-white rounded outline-none' name='title' type="text"/>
+                    <input onChange={handleOnChange} className='p-3 text-black bg-white rounded outline-none' placeholder='Link' name='title' type="text"/>
                     <label className="font-semibold text-white" htmlFor="url">Url :</label>
-                    <input onChange={handleOnChange} className='p-3 text-black bg-white rounded outline-none ' name='url' type="text"/>
+                    <input onChange={handleOnChange} className='p-3 text-black bg-white rounded outline-none ' placeholder='https://link.com/' name='url' type="text"/>
                     <button type='submit' className='w-48 p-2 mt-4 font-semibold text-black bg-white border-white rounded hover:bg-principal hover:text-white '>Crear nuevo link</button>
                 </form>
                 <div className='px-2 my-8 md:w-[800px] w-full'>
