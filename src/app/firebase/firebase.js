@@ -20,7 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
+export const db = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 
 export async function userExists(uid){
