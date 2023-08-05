@@ -4,9 +4,8 @@ import {BiLinkExternal} from 'react-icons/bi'
 import { motion } from "framer-motion"
 import  { useEffect, useState } from 'react'
 import { existsUsername,getProfilePhotoUrl,getUserPublicProfileUser} from '@/app/firebase/firebase';
-import Image from 'next/image';
 
-function page() {
+function PublicPage() {
     const params = useParams();
     const [profile,setProfile] = useState(null);
     const [url,setUrl] = useState('');
@@ -90,4 +89,4 @@ function page() {
     
     
 
-export default page
+export default PublicPage
