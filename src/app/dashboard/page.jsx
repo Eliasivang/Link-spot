@@ -7,7 +7,7 @@ import {v4 as uuidv4} from "uuid";
 import { deleteLink, getLinks, insertNewLink, updateLink } from '../firebase/firebase';
 import Link from '../components/Link';
 
-function page() {
+function Dashboard() {
 const router = useRouter();
 const [currentUser,setCurrentUser] = useState({});
 const [state,setState] = useState(0)
@@ -113,4 +113,4 @@ const [links,setLinks] = useState([]);
         )
     }
 
-export default page
+export default Dashboard

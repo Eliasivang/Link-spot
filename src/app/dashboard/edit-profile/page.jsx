@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { getProfilePhotoUrl, setUserProfilePhoto, updateUser } from '../../firebase/firebase';
 
 
-function page() {
+function EditProfile() {
 const router = useRouter();
 const fileRef = useRef(null);
 const [currentUser,setCurrentUser] = useState({}) 
@@ -79,4 +79,4 @@ const [state,setState] = useState(0);
 )
 }
 
-export default page
+export default EditProfile

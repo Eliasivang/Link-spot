@@ -6,7 +6,7 @@ import { existsUsername, updateUser } from '../firebase/firebase'
 import Header from '../components/Header'
 
 
-function page() {
+function ChooseUsername() {
 const [state,setState] = useState()
 const router = useRouter()
 const [currentUser,setCurrentUser] = useState({})
@@ -78,4 +78,4 @@ if(state ==3 || state==5 ){
   </AuthProvider>
 }
 
-export default page
+export default ChooseUsername
