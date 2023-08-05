@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className='h-screen' lang="en">
-      <body className={`${font.className}"h-screen relative"`}>
+      <body className={font.className}>
         {children}
         </body>
     </html>
