@@ -29,7 +29,7 @@ function PublicPage() {
                 console.error(error);
             }
         }
-    },[state]);
+    },[]);
     if(state===0){
         return (
             <div className='flex items-center justify-center w-full h-screen '>

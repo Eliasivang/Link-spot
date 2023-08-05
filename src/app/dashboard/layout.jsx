@@ -9,8 +9,7 @@ function layaout({children}) {
     <>  
         <Header/>
         <ul className='flex justify-between w-full'>
-            
-            <NavBar/>
+         <NavBar/>
         </ul>
         {children}
     
