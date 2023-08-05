@@ -7,7 +7,7 @@ function NavBar() {
 const router = useRouter();
     async function onHandleSignOut(){
      await exit();
-     router.push('/login')
+     router.push('/')
     }
     function onHandleClickProfile(){
         router.push('/dashboard/edit-profile');
