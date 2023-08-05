@@ -12,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${font.className}"h-screen"`}>
+    <html className='h-screen' lang="en">
+      <body className={`${font.className}"h-screen relative"`}>
         {children}
         </body>
     </html>
