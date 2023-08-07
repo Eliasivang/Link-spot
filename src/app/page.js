@@ -52,7 +52,7 @@ if(state===4){
     return (
         <>
         <Header/>
-        <main className="flex flex-col items-center w-full px-2 mb-10 text-white md:my-8 ">
+        <main className="flex flex-col items-center w-full px-2 text-white md:my-8 ">
             <div className="w-full md:w-[800px]">
             <div className="block gap-2 mb-8 md:flex">
                 <p className='p-2 text-[27px] md:text-[40px] font-semibold '>Crea tu cuenta y guarda todos tus <span className="font-bold text-violet-700">links</span> en un solo lugar.</p>
